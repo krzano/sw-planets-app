@@ -10,19 +10,20 @@ const SinglePlanet = () => {
   const { id } = useParams();
   const { data: planet, isLoading, isError } = useFetch(`${PLANETS_API_URL}/${id}`);
 
-  if (isError)
-    return (
-      <Typography>
-        Something went wrong... <Link to={PLANETS_PATH}>Back to planet list</Link>
-      </Typography>
-    );
   if (isLoading) return <LoadingSpinner />;
   return (
-    <Stack spacing={3}>
-      {planet ? (
+    <>
+      {isError ? (
+        <Typography fontSize={24} textAlign={"center"}>
+          Something went wrong...
+        </Typography>
+      ) : planet ? (
         <Paper
           sx={{
-            p: { xs: 4, sm: 6 },
+            mx: "auto",
+            py: 4,
+            px: 6,
+            maxWidth: 500,
             border: 1,
             borderColor: (theme) => theme.palette.primary.dark,
           }}
@@ -46,11 +47,11 @@ const SinglePlanet = () => {
         </Paper>
       ) : null}
       <Box display={"grid"} justifyContent={"center"}>
-        <Button variant="contained" component={Link} to={PLANETS_PATH}>
+        <Button variant="contained" component={Link} to={PLANETS_PATH} sx={{ mt: 3 }}>
           Back to planet list
         </Button>
       </Box>
-    </Stack>
+    </>
   );
 };
 export default SinglePlanet;
