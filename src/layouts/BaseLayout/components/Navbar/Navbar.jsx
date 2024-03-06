@@ -13,12 +13,13 @@ const Navbar = () => {
         top: 0,
         py: 2,
         backgroundColor: (theme) => theme.palette.background.paper,
+        boxShadow: 8,
       }}
       component={"header"}
     >
       <Container component={"nav"}>
         <Link to={BASE_PAGE_PATH}>
-          <Box component={"img"} src={logo} height={40} />
+          <Box component={"img"} src={logo} height={34} />
         </Link>
       </Container>
     </Box>
