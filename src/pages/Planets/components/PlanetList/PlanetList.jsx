@@ -23,15 +23,15 @@ const PlanetList = () => {
       itemsArray={data.results}
       columns={[
         {
-          label: "Name",
+          label: "name",
           render: (planet) => (
             <Tooltip title="Go to planet page">
               <Link
                 component={RouterLink}
                 to={`${PLANETS_PATH}/${extractPlanetIdFromUrl(planet.url)}`}
-                fontSize={20}
+                fontSize={18}
                 fontWeight={500}
-                sx={{ color: (theme) => theme.palette.text.primary }}
+                color={"inherit"}
                 underline="hover"
               >
                 {planet.name}
@@ -42,7 +42,7 @@ const PlanetList = () => {
         },
         {
           label: "diameter",
-          render: (planet) => planet.diameter,
+          render: (planet) => <Typography>{planet.diameter}</Typography>,
           align: "right",
         },
         {

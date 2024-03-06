@@ -8,20 +8,25 @@ import {
   TableBody,
   Box,
   TablePagination,
+  Typography,
 } from "@mui/material";
 import TableLoadingBackdrop from "./components/TableLoadingBackdrop/TableLoadingBackdrop";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const Table = ({ itemsArray, columns, currentPage, onPageChange, pageSize, count, isLoading }) => {
   return (
-    <Paper sx={{ border: 1, borderColor: (theme) => theme.palette.primary.dark }}>
+    <Paper
+      sx={{ border: 1, borderColor: (theme) => theme.palette.primary.dark, overflow: "hidden" }}
+    >
       <TableContainer>
         <StyledTable>
           <TableHead>
             <TableRow>
               {columns.map(({ label, align }, index) => (
                 <TableCell key={index} align={align}>
-                  {label}
+                  <Typography textTransform={"uppercase"} fontSize={18} fontWeight={500} py={1}>
+                    {label}
+                  </Typography>
                 </TableCell>
               ))}
             </TableRow>
@@ -71,15 +76,30 @@ const Table = ({ itemsArray, columns, currentPage, onPageChange, pageSize, count
 };
 
 const StyledTable = styled(MuiTable)`
-  .MuiTableRow-head {
-    text-transform: uppercase;
-  }
-  .MuiTableRow-root {
-    transition: background-color 0.3s;
-    &:hover {
-      background-color: ${({ theme }) => theme.palette.background.paper};
+  ${({ theme }) => css`
+    overflow: hidden;
+    .MuiTableCell-root {
+      color: ${theme.palette.grey[50]};
+      padding: ${theme.spacing(2)} ${theme.spacing(4)};
     }
-  }
+    .MuiTableHead-root {
+      .MuiTableRow-root {
+        background: linear-gradient(
+          180deg,
+          ${theme.palette.grey[800]} 0%,
+          ${theme.palette.grey[900]} 160%
+        );
+      }
+    }
+    .MuiTableBody-root {
+      .MuiTableRow-root {
+        transition: background-color 0.3s;
+        &:hover {
+          background-color: ${theme.palette.background.paper};
+        }
+      }
+    }
+  `};
 `;
 
 export default Table;

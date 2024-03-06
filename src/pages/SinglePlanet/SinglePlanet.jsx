@@ -46,7 +46,7 @@ const SinglePlanet = () => {
         </Paper>
       ) : null}
       <Box display={"grid"} justifyContent={"center"}>
-        <Button variant="outlined" color="secondary" component={Link} to={PLANETS_PATH}>
+        <Button variant="contained" component={Link} to={PLANETS_PATH}>
           Back to planet list
         </Button>
       </Box>

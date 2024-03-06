@@ -22,14 +22,7 @@ const ErrorElement = () => {
       <Typography variant="h2">Error</Typography>
       <Divider flexItem />
       <h2>{errorMessage}</h2>
-      <Button
-        variant="outlined"
-        color="secondary"
-        size="large"
-        component={Link}
-        to={BASE_PAGE_PATH}
-        className="btn"
-      >
+      <Button variant="contained" size="large" component={Link} to={BASE_PAGE_PATH}>
         back home
       </Button>
     </Container>
